@@ -1,0 +1,109 @@
+# The docker compose override file which adds extra configuration on top of the docker-compose file
+
+version: '3.4'
+
+services:
+  userdb:
+    container_name: userdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=UsersDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  GameAnalysisRabbitMQClient:
+    container_name: gameanalysisrabbitmqclient
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+
+  VideoAnalysisRabbitMQClient:
+    container_name: videoanalysisrabbitmqclient
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+    #volumes:
+      #- /VideoAnalysis
+
+  RetrieveGameResultsForGraphRabbitMQClient:
+    container_name: retrievegameresultsforgraphrabbitmqclient
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+
+  CalculateDifficultyRabbitMQClient:
+    container_name: calculatedifficultyrabbitmqclient
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+  
+  swiftusermanagement.api:
+    container_name: swiftusermanagementapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+      #- ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      #- ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - "DatabaseSettings__ConnectionString=Host=userdb;Port=5432;Database=UsersDb;User Id=admin;Password=admin1234"
+    ports:
+      #- "8001:443"
+      - "80:80"
+    depends_on:
+      - userdb
+      - rabbitmq
+    links:
+      - rabbitmq
+      - userdb
+    #volumes:
+      #- ~/.aspnet/https:/https:ro
+
+  
+  

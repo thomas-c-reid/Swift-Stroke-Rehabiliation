@@ -1,0 +1,11 @@
+# Kubernetes deployment file for rabbitmq
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmqcluster-sample
+spec:
+  service:
+    type: LoadBalancer

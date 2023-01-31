@@ -1,0 +1,92 @@
+# The docker compose file whic is used for deployment on Azure to a multi container app
+
+version: '3.4'
+
+services:
+  userdb:
+    image: postgres
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+  
+  pgadmin:
+    image: dpage/pgadmin4
+
+  portainer:
+    image: portainer/portainer-ce
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 512M
+ 
+  GameAnalysisRabbitMQClient:
+    image: swiftrehabappcontainerregistry.azurecr.io/python-gameanalysis
+    deploy:
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 512M
+    build:
+      context: .
+      dockerfile: GameAnalysis/Dockerfile
+
+  VideoAnalysisRabbitMQClient:
+    image: swiftrehabappcontainerregistry.azurecr.io/python-videoanalysis
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+    build:
+      context: .
+      dockerfile: VideoAnalysis/Dockerfile
+
+  RetrieveGameResultsForGraphRabbitMQClient:
+    image: swiftrehabappcontainerregistry.azurecr.io/python-retrievegameresultsforgraph
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 512M
+    build:
+      context: .
+      dockerfile: RetrieveGameResultsForGraph/Dockerfile
+
+  CalculateDifficultyRabbitMQClient:
+    image: swiftrehabappcontainerregistry.azurecr.io/python-calculatedifficulty
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 512M
+    build:
+      context: .
+      dockerfile: CalculateDifficulty/Dockerfile
+
+  swiftusermanagement.api:
+    image: swiftrehabappcontainerregistry.azurecr.io/swiftusermanagementapi
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 512M
+    build:
+      context: .
+      dockerfile: SwiftUserManagement/SwiftUserManagement.API/Dockerfile
+
+volumes:
+  portainer_data:
+  postgresdata:
+    driver: azure_file
+    driver_opts:
+      share_name: swiftrehabfileshare
+      storage_account_name: swiftrehabstorage
+  pgadmin_data:
+
+

@@ -1,0 +1,61 @@
+# Docker compose override file used for running with the Azure Service Bus instead of rabbitmq
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+version: '3.4'
+
+services:
+  userdb:
+    container_name: userdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+      - POSTGRES_DB=UsersDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  #pgadmin:
+  #  container_name: pgadmin
+  #  environment:
+  #    - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+  #    - PGADMIN_DEFAULT_PASSWORD=admin1234
+  #  restart: always
+  #  ports:
+  #    - "5050:80"
+  #  volumes:
+  #    - pgadmin_data:/root/.pgadmin
+
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8001"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  swiftusermanagement.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings__ConnectionString=Server=userdb;Port=5432;Database=UsersDb;User Id=admin;Password=admin1234"
+    ports:
+      - "5000:80"
+
+  GameAnalysisAzureServiceBusClient:
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+
+  VideoAnalysisAzureServiceBusClient:
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+    volumes:
+      - /VideoAnalysis
+
+  
+  

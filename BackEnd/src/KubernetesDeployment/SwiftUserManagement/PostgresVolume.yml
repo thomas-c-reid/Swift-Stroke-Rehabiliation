@@ -1,0 +1,32 @@
+# Postgresql volume for the kubernetes deployment
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+apiVersion: v1
+kind: PersistentVolume 
+metadata:
+  name: postgres-volume 
+  labels:
+    type: local 
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi 
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/lib/postgresql/data/" 
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim 
+metadata:
+  name: postgresql-volume-claim 
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 2Gi

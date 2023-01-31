@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Swift-CSC3069-v3",
+    "slug": "Swift-CSC3069-v3",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/app-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#B8E8FC"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "icon": "./app/assets/app-icon.png",
+      "splash": {
+        "image": "./app/assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#CCF2F4"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

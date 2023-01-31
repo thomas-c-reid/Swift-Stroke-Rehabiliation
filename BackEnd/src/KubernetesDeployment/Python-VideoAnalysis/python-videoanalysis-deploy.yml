@@ -1,0 +1,47 @@
+# Kubernetes deployment file for the python video analysis
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-videoanalysis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: python-videoanalysis
+    spec:
+      containers:
+      - name: python-videoanalysis
+        image: michalbguzy730/python-videoanalysis
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+        #imagePullPolicy: "IfNotPresent"
+
+  selector:
+    matchLabels:
+      app: python-videoanalysis
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-videoanalysis
+spec:
+  ports:
+  - port: 8001
+    nodePort: 30002
+  selector:
+    app: python-videoanalysis
+
+
+
+
+
+

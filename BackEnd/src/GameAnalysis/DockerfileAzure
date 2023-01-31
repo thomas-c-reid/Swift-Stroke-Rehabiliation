@@ -1,0 +1,9 @@
+# Dockerfile fo rthe game analysis service to be used for connecting to the Azure Service Bus instead of rabbitmq
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+FROM python:3.9
+WORKDIR /src
+COPY ["GameAnalysis/GameAnalysisAzureServiceBusClient.py", "GameAnalysis/"]
+RUN pip install azure.servicebus
+CMD [ "python", "-u", "GameAnalysis/GameAnalysisAzureServiceBusClient.py"]

@@ -1,0 +1,39 @@
+# Docker compose file used for running with the Azure Service Bus instead of rabbitmq
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+version: '3.4'
+
+services:
+  userdb:
+    image: postgres
+  
+  #pgadmin:
+  #  image: dpage/pgadmin4
+
+  portainer:
+    image: portainer/portainer-ce
+
+  swiftusermanagement.api:
+    image: ${DOCKER_REGISTRY-}swiftusermanagementapi
+    build:
+      context: .
+      dockerfile: SwiftUserManagement/SwiftUserManagement.API/Dockerfile
+ 
+  GameAnalysisAzureServiceBusClient:
+    image: ${DOCKER_REGISTRY-}python-gameanalysis
+    build:
+      context: .
+      dockerfile: GameAnalysis/DockerfileAzure
+
+  VideoAnalysisAzureServiceBusClient:
+    image: ${DOCKER_REGISTRY-}python-videoanalysis
+    build:
+      context: .
+      dockerfile: VideoAnalysis/DockerfileAzure
+
+volumes:
+  mongo_data:
+  portainer_data:
+  postgres_data:
+  #pgadmin_data:

@@ -1,0 +1,14 @@
+# Kubernetes config map for the postgresql database
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: UsersDb
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: admin1234

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SwiftUserManagement.Infrastructure.Test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

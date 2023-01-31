@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <ProjectGuid>9574ded3-452d-41c4-b6bd-7357e12d6b53</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
+    <DockerServiceName>swiftusermanagement.api</DockerServiceName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='docker|AnyCPU'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='dockwer1|AnyCPU'" />
+  <ItemGroup>
+    <None Include="docker-compose-local.yml" />
+    <None Include="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </None>
+    <None Include="docker-compose.yml" />
+    <None Include=".dockerignore" />
+    <None Include="docker-composeServiceBus.override.yml" />
+    <None Include="docker-composeServiceBus.yml" />
+  </ItemGroup>
+</Project>

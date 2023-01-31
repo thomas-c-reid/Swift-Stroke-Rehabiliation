@@ -1,0 +1,206 @@
+# The kubernetes deployment file used to deploy to Azure Kubernetes Service
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+---
+
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmqcluster-sample
+spec:
+  service:
+    type: LoadBalancer
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: UsersDb
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: admin1234
+
+---
+
+apiVersion: v1
+kind: PersistentVolume 
+metadata:
+  name: postgres-volume 
+  labels:
+    type: local 
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi 
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/lib/postgresql/data/" 
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim 
+metadata:
+  name: postgresql-volume-claim 
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+
+# Deployment file for the pod which holds the user database
+# and the ASP.Net Core Web API
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swiftusermanagementapi
+  labels:
+    app: swiftusermanagementapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: swiftusermanagementapi
+  template:
+    metadata:
+      labels:
+        app: swiftusermanagementapi
+        service: swiftusermanagementapi
+    spec:
+      containers:
+      - name: swiftusermanagementapi
+        image: michalbguzy730/swiftusermanagementapi:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+        #imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Deployment
+        - name: DatabaseSettings__ConnectionString
+          value: Server=userdb;Port=5432;Database=UsersDb;User Id=admin;Password=admin1234
+
+  selector:
+    matchLabels:
+      app: swiftusermanagementapi
+
+---
+# Deplyment manifest for the database
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          #imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432 
+          envFrom:
+            - configMapRef:
+                name: postgres-secret 
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgresql-volume-claim 
+
+---
+# Declaring the ASP.Net Core service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: swiftusermanagementapi
+  labels:
+    app: swiftusermanagementapi
+    service: swiftusermanagementapi
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    service: swiftusermanagementapi
+
+---
+# Declaring the PostgreSQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: userdb
+  labels:
+    app: postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: postgres
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: python-videoanalysis
+# spec:
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: python-videoanalysis
+#     spec:
+#       containers:
+#       - name: python-videoanalysis
+#         image: /python-videoanalysis
+#         resources:
+#           requests:
+#             memory: "512Mi"
+#             cpu: "500m"
+#         #imagePullPolicy: "IfNotPresent"
+
+#   selector:
+#     matchLabels:
+#       app: python-videoanalysis
+
+# ---
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: python-videoanalysis
+# spec:
+#   ports:
+#   - port: 8001
+#     nodePort: 30002
+#   selector:
+#     app: python-videoanalysis

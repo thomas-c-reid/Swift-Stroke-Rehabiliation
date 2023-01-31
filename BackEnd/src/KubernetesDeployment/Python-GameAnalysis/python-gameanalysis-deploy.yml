@@ -1,0 +1,47 @@
+# Kubernetes deployment file for the python game analysis service
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-gameanalysis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: python-gameanalysis
+    spec:
+      containers:
+      - name: python-gameanalysis
+        image: michalbguzy730/python-gameanalysis
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+        #imagePullPolicy: "IfNotPresent"
+
+  selector:
+    matchLabels:
+      app: python-gameanalysis
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-gameanalysis
+spec:
+  ports:
+  - port: 8003
+    nodePort: 30003
+  selector:
+    app: python-gameanalysis
+
+
+
+
+
+

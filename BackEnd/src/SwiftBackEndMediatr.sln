@@ -1,0 +1,228 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{11A299BE-51D4-48C0-8516-906F4AB46298}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9574DED3-452D-41C4-B6BD-7357E12D6B53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameAnalysis", "GameAnalysis", "{15796A61-9317-46DD-94D7-7DB42AA1650A}"
+	ProjectSection(SolutionItems) = preProject
+		GameAnalysis\Dockerfile = GameAnalysis\Dockerfile
+		GameAnalysis\DockerfileAzure = GameAnalysis\DockerfileAzure
+		GameAnalysis\GameAnalysisAzureServiceBusClient.py = GameAnalysis\GameAnalysisAzureServiceBusClient.py
+		GameAnalysis\GameAnalysisRabbitMQClient.py = GameAnalysis\GameAnalysisRabbitMQClient.py
+		GameAnalysis\Requirements.txt = GameAnalysis\Requirements.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VideoAnalysis", "VideoAnalysis", "{0A2B6DC6-38D4-4001-AEDB-A01FDD5D65F4}"
+	ProjectSection(SolutionItems) = preProject
+		VideoAnalysis\Dockerfile = VideoAnalysis\Dockerfile
+		VideoAnalysis\DockerfileAzure = VideoAnalysis\DockerfileAzure
+		VideoAnalysis\impairedweaknessmodel.sav = VideoAnalysis\impairedweaknessmodel.sav
+		VideoAnalysis\Requirements.txt = VideoAnalysis\Requirements.txt
+		VideoAnalysis\VideoAnalysisAzureServiceBusClient.py = VideoAnalysis\VideoAnalysisAzureServiceBusClient.py
+		VideoAnalysis\VideoAnalysisRabbitMQClient.py = VideoAnalysis\VideoAnalysisRabbitMQClient.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PythonRequirements", "PythonRequirements", "{13D94E84-F501-44DA-B0BD-75ED41CE9531}"
+	ProjectSection(SolutionItems) = preProject
+		PythonRequirements\Requirements.txt = PythonRequirements\Requirements.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftUserManagement", "SwiftUserManagement", "{03D24DAA-EDE3-4256-9C87-64510904A3EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagement.API", "SwiftUserManagement\SwiftUserManagement.API\SwiftUserManagement.API.csproj", "{1F2E7103-472C-444E-9BD2-3B5481B037BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2} = {0EDD7B0B-13BC-48C0-8904-4931BD4687F2}
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8} = {570244C7-D84D-4118-B2FB-674B4BD3B0D8}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagement.Domain", "SwiftUserManagement\SwiftUserManagement.Domain\SwiftUserManagement.Domain.csproj", "{570244C7-D84D-4118-B2FB-674B4BD3B0D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagement.Infrastructure", "SwiftUserManagement\SwiftUserManagement.Infrastructure\SwiftUserManagement.Infrastructure.csproj", "{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KubernetesDeployment", "KubernetesDeployment", "{FB32C927-D9CF-4B24-B993-468C434255B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python-GameAnalysis", "Python-GameAnalysis", "{512617A5-1E5D-4A2B-9AC3-EB0B70791E59}"
+	ProjectSection(SolutionItems) = preProject
+		KubernetesDeployment\Python-GameAnalysis\python-gameanalysis-deploy.yml = KubernetesDeployment\Python-GameAnalysis\python-gameanalysis-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python-VideoAnalysis", "Python-VideoAnalysis", "{BE61A655-587D-4E47-B0A6-33305E270862}"
+	ProjectSection(SolutionItems) = preProject
+		KubernetesDeployment\Python-VideoAnalysis\python-videoanalysis-deploy.yml = KubernetesDeployment\Python-VideoAnalysis\python-videoanalysis-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftUserManagement", "SwiftUserManagement", "{FD7EF7AC-4F90-4FB2-92E7-A3C8C21D485E}"
+	ProjectSection(SolutionItems) = preProject
+		KubernetesDeployment\SwiftUserManagement\postgres-configmap.yml = KubernetesDeployment\SwiftUserManagement\postgres-configmap.yml
+		KubernetesDeployment\SwiftUserManagement\PostgresVolume.yml = KubernetesDeployment\SwiftUserManagement\PostgresVolume.yml
+		KubernetesDeployment\SwiftUserManagement\swiftusermanagement-deploy.yml = KubernetesDeployment\SwiftUserManagement\swiftusermanagement-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestVideo", "TestVideo", "{256F8159-2FA8-4B32-A1A1-541CAED1A925}"
+	ProjectSection(SolutionItems) = preProject
+		..\TestVideo\IMG_0012.MOV = ..\TestVideo\IMG_0012.MOV
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagement.Application", "SwiftUserManagement\SwiftUserManagement.Application\SwiftUserManagement.Application.csproj", "{27E45EC5-7276-4E2A-AC2D-242A025774D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CalculateDifficulty", "CalculateDifficulty", "{11036488-7499-42D6-BBF0-EAC32F23181F}"
+	ProjectSection(SolutionItems) = preProject
+		CalculateDifficulty\CalculateDifficultyRabbitMQClient.py = CalculateDifficulty\CalculateDifficultyRabbitMQClient.py
+		CalculateDifficulty\Dockerfile = CalculateDifficulty\Dockerfile
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RetrieveGameResultsForGraph", "RetrieveGameResultsForGraph", "{059F8F53-3034-4B72-922A-70D5BA2C276F}"
+	ProjectSection(SolutionItems) = preProject
+		RetrieveGameResultsForGraph\Dockerfile = RetrieveGameResultsForGraph\Dockerfile
+		RetrieveGameResultsForGraph\gameScores.py = RetrieveGameResultsForGraph\gameScores.py
+		RetrieveGameResultsForGraph\getAccuracyHistoric.py = RetrieveGameResultsForGraph\getAccuracyHistoric.py
+		RetrieveGameResultsForGraph\getRadarData.py = RetrieveGameResultsForGraph\getRadarData.py
+		RetrieveGameResultsForGraph\getResults.py = RetrieveGameResultsForGraph\getResults.py
+		RetrieveGameResultsForGraph\getTimeHistoric.py = RetrieveGameResultsForGraph\getTimeHistoric.py
+		RetrieveGameResultsForGraph\RetrieveGameResultsForGraphRabbitMQClient.py = RetrieveGameResultsForGraph\RetrieveGameResultsForGraphRabbitMQClient.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{235BAED1-506E-45A9-89C8-7AC3E1D8BD71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagement.Infrastructure.Test", "SwiftUserManagement\Tests\SwiftUserManagement.Infrastructure.Test\SwiftUserManagement.Infrastructure.Test.csproj", "{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwiftUserManagementAPI.Test", "SwiftUserManagement\Tests\SwiftUserManagementAPI.Test\SwiftUserManagementAPI.Test.csproj", "{2244F8BC-CB78-49B1-9CB9-E17997023E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwiftUserManagement.Application.Tests", "SwiftUserManagement\Tests\SwiftUserManagement.Application.Tests\SwiftUserManagement.Application.Tests.csproj", "{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		docker|Any CPU = docker|Any CPU
+		docker-compose|Any CPU = docker-compose|Any CPU
+		dockwer1|Any CPU = dockwer1|Any CPU
+		NoVariablesDefault|Any CPU = NoVariablesDefault|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.Debug|Any CPU.ActiveCfg = docker|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.Debug|Any CPU.Build.0 = docker|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.docker|Any CPU.ActiveCfg = docker|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.docker|Any CPU.Build.0 = docker|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.docker-compose|Any CPU.ActiveCfg = docker|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.dockwer1|Any CPU.ActiveCfg = dockwer1|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.dockwer1|Any CPU.Build.0 = dockwer1|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.NoVariablesDefault|Any CPU.ActiveCfg = dockwer1|Any CPU
+		{9574DED3-452D-41C4-B6BD-7357E12D6B53}.Release|Any CPU.ActiveCfg = dockwer1|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.docker|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.docker|Any CPU.Build.0 = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.docker-compose|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.docker-compose|Any CPU.Build.0 = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.dockwer1|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.dockwer1|Any CPU.Build.0 = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15796A61-9317-46DD-94D7-7DB42AA1650A} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{0A2B6DC6-38D4-4001-AEDB-A01FDD5D65F4} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{13D94E84-F501-44DA-B0BD-75ED41CE9531} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{03D24DAA-EDE3-4256-9C87-64510904A3EE} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{1F2E7103-472C-444E-9BD2-3B5481B037BB} = {03D24DAA-EDE3-4256-9C87-64510904A3EE}
+		{570244C7-D84D-4118-B2FB-674B4BD3B0D8} = {03D24DAA-EDE3-4256-9C87-64510904A3EE}
+		{0EDD7B0B-13BC-48C0-8904-4931BD4687F2} = {03D24DAA-EDE3-4256-9C87-64510904A3EE}
+		{FB32C927-D9CF-4B24-B993-468C434255B9} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{512617A5-1E5D-4A2B-9AC3-EB0B70791E59} = {FB32C927-D9CF-4B24-B993-468C434255B9}
+		{BE61A655-587D-4E47-B0A6-33305E270862} = {FB32C927-D9CF-4B24-B993-468C434255B9}
+		{FD7EF7AC-4F90-4FB2-92E7-A3C8C21D485E} = {FB32C927-D9CF-4B24-B993-468C434255B9}
+		{256F8159-2FA8-4B32-A1A1-541CAED1A925} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{27E45EC5-7276-4E2A-AC2D-242A025774D6} = {03D24DAA-EDE3-4256-9C87-64510904A3EE}
+		{11036488-7499-42D6-BBF0-EAC32F23181F} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{059F8F53-3034-4B72-922A-70D5BA2C276F} = {11A299BE-51D4-48C0-8516-906F4AB46298}
+		{235BAED1-506E-45A9-89C8-7AC3E1D8BD71} = {03D24DAA-EDE3-4256-9C87-64510904A3EE}
+		{034D49D1-FD06-4AAB-A970-3CAE81F1E44B} = {235BAED1-506E-45A9-89C8-7AC3E1D8BD71}
+		{2244F8BC-CB78-49B1-9CB9-E17997023E04} = {235BAED1-506E-45A9-89C8-7AC3E1D8BD71}
+		{8FD0A8E9-0F6F-4173-A23F-ACDF9C8A04C3} = {235BAED1-506E-45A9-89C8-7AC3E1D8BD71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D8BC0A0-B964-43D6-B3A3-A78C758EAB27}
+	EndGlobalSection
+EndGlobal

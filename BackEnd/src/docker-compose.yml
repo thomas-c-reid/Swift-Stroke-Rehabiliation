@@ -1,0 +1,57 @@
+# The docker compose file which adds extra configuration on top of the docker-compose file
+
+version: '3.4'
+
+services:
+  userdb:
+    image: postgres
+  
+  pgadmin:
+    image: dpage/pgadmin4
+
+  portainer:
+    image: portainer/portainer-ce
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+ 
+  GameAnalysisRabbitMQClient:
+    image: ${DOCKER_REGISTRY-}python-gameanalysis
+    build:
+      context: .
+      dockerfile: GameAnalysis/Dockerfile
+
+  VideoAnalysisRabbitMQClient:
+    image: ${DOCKER_REGISTRY-}python-videoanalysis
+    build:
+      context: .
+      dockerfile: VideoAnalysis/Dockerfile
+
+  RetrieveGameResultsForGraphRabbitMQClient:
+    image: ${DOCKER_REGISTRY-}python-retrievegameresultsforgraph
+    build:
+      context: .
+      dockerfile: RetrieveGameResultsForGraph/Dockerfile
+
+  CalculateDifficultyRabbitMQClient:
+    image: ${DOCKER_REGISTRY-}python-calculatedifficulty
+    build:
+      context: .
+      dockerfile: CalculateDifficulty/Dockerfile
+
+  swiftusermanagement.api:
+    image: ${DOCKER_REGISTRY-}swiftusermanagementapi
+    build:
+      context: .
+      dockerfile: SwiftUserManagement/SwiftUserManagement.API/Dockerfile
+
+volumes:
+  portainer_data:
+  postgresdata:
+  #   driver: azure_file
+  #   driver_opts:
+  #     share_name: swiftrehabfileshare
+  #     storage_account_name: swiftrehabstorage
+  pgadmin_data:
+
+

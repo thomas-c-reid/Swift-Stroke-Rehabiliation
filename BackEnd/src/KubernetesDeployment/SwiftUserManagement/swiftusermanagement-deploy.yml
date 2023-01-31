@@ -1,0 +1,107 @@
+# Deployment file for the pod which holds the user database
+# and the ASP.Net Core Web API
+# Doesn't currently work needs updated
+# Not needed to run the code locally
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swiftusermanagementapi
+  labels:
+    app: swiftusermanagementapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: swiftusermanagementapi
+      app: swiftusermanagementapi
+  template:
+    metadata:
+      labels:
+        app: swiftusermanagementapi
+        service: swiftusermanagementapi
+    spec:
+      containers:
+      - name: swiftusermanagementapi
+        image: swiftrehabcontainers.azurecr.io/swiftusermanagementapi:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+        #imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Deployment
+        - name: DatabaseSettings__ConnectionString
+          value: Server=userdb;Port=5432;Database=UsersDb;User Id=admin;Password=admin1234
+
+---
+# Deplyment manifest for the database
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          #imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432 
+          envFrom:
+            - configMapRef:
+                name: postgres-secret 
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgresql-volume-claim 
+
+---
+# Declaring the ASP.Net Core service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: swiftusermanagementapi
+  labels:
+    app: swiftusermanagementapi
+    service: swiftusermanagementapi
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    service: swiftusermanagementapi
+
+---
+# Declaring the PostgreSQL Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: userdb
+  labels:
+    app: postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: postgres
